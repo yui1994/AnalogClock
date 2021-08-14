@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./clock01.ico">
+    <link rel="stylesheet" href="css.css">
+    <script>
+        // JS的單引號跟雙引號中的字串不能換行
+        // 要換行的話要用上引號``
+        // 用JS控制轉的角度(針指的方向)
+        let jstart = null;
+        const nt = new Date();
+        const
+            ns = nt.getSeconds(),
+            nm = nt.getUTCMinutes(),
+            nh = nt.getHours();
+
+            const
+            ss = ns * 6,
+            sm = nm * 6 + ns * 0.1, //為了讓分針不是一次跳6度 而是緩慢的前進的感覺
+            sh = nh * 30 + nm * 0.5 + ns * 0.5 / 60; 
+
+    </script>
+</head>
+<body>
+    
+    <div class="circle">
+        <div class="time n12"></div>
+        <div class="time n1"></div>
+        <div class="time n2"></div>
+        <div class="time n3"></div>
+        <div class="time n4"></div>
+        <div class="time n5"></div>
+        <div class="time n6"></div>
+        <div class="time n7"></div>
+        <div class="time n8"></div>
+        <div class="time n9"></div>
+        <div class="time n10"></div>
+        <div class="time n11"></div>
+        <div class="jmin1 omin4"></div>
+        <div class="jhur1 ohur4"></div>
+        <div class="jsec1 osec4"></div>
+        <div class="maru"></div>
+    </div>
+
+    <script>
+        document.querySelector(".omin4").style.transform = "rotate(" + sm + "deg)"
+        document.querySelector(".ohur4").style.transform = "rotate(" + sh + "deg)"
+        document.querySelector(".osec4").style.transform = "rotate(" + ss + "deg)"
+
+        setInterval(() => {
+            const nt = new Date();
+            const
+                ns = nt.getSeconds(),
+                nm = nt.getMinutes(),
+                nh = nt.getHours();
+
+            const
+                ss = ns * 6,
+                sm = nm * 6 + ns * 0.1, //為了讓分針不是一次跳6度 而是緩慢的前進的感覺
+                sh = nh * 30 + nm * 0.5 + ns * 0.5 / 60; 
+
+            document.querySelector(".omin4").style.transform = "rotate(" + sm + "deg)"
+            document.querySelector(".ohur4").style.transform = "rotate(" + sh + "deg)"
+            document.querySelector(".osec4").style.transform = "rotate(" + ss + "deg)"
+        }
+            , 1000);
+    </script>
+</body>
+</html>
